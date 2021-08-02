@@ -1,11 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>My New Hugo Site</title>
-        <link>https://t4pusd.github.io/</link>
-        <description>My New Hugo Site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 02 Aug 2021 13:10:51 &#43;0600</lastBuildDate>
-            <atom:link href="https://t4pusd.github.io/index.xml" rel="self" type="application/rss+xml" />
-        <item>
+        <title>All Posts - My New Hugo Site</title>
+        <link>https://t4pusd.github.io/posts/</link>
+        <description>All Posts | My New Hugo Site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 02 Aug 2021 13:10:51 &#43;0600</lastBuildDate><atom:link href="https://t4pusd.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>First_post</title>
     <link>https://t4pusd.github.io/posts/first_post/</link>
     <pubDate>Mon, 02 Aug 2021 13:10:51 &#43;0600</pubDate>
