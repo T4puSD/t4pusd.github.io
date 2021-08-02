@@ -6,12 +6,12 @@
         <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 02 Aug 2021 13:10:51 &#43;0600</lastBuildDate>
             <atom:link href="https://t4pusd.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>First_post</title>
+    <title>First Post</title>
     <link>https://t4pusd.github.io/posts/first_post/</link>
     <pubDate>Mon, 02 Aug 2021 13:10:51 &#43;0600</pubDate>
     <author>Author</author>
     <guid>https://t4pusd.github.io/posts/first_post/</guid>
-    <description><![CDATA[Hello! This is my first post. Please encourage me To write more By sharing this site with others.
-** Thank You **]]></description>
+    <description><![CDATA[Hello! This is a demo post!
+Thank You]]></description>
 </item></channel>
 </rss>
