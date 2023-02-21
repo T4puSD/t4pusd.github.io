@@ -1,1 +1,39 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Tags - Tag -</title><link>https://t4pusd.github.io/tags/</link><description>Tags - Tag -</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://t4pusd.github.io/tags/" rel="self" type="application/rss+xml"/></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Tags - Tag - </title>
+        <link>https://t4pusd.github.io/tags/</link>
+        <description>Tags - Tag - </description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 13 Feb 2023 22:08:16 &#43;0600</lastBuildDate><atom:link href="https://t4pusd.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>JWT</title>
+    <link>https://t4pusd.github.io/tags/jwt/</link>
+    <pubDate>Mon, 13 Feb 2023 22:08:16 &#43;0600</pubDate>
+    <author>Author</author>
+    <guid>https://t4pusd.github.io/tags/jwt/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Spring Boot</title>
+    <link>https://t4pusd.github.io/tags/spring-boot/</link>
+    <pubDate>Mon, 13 Feb 2023 22:08:16 &#43;0600</pubDate>
+    <author>Author</author>
+    <guid>https://t4pusd.github.io/tags/spring-boot/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Spring Boot Reactive</title>
+    <link>https://t4pusd.github.io/tags/spring-boot-reactive/</link>
+    <pubDate>Mon, 13 Feb 2023 22:08:16 &#43;0600</pubDate>
+    <author>Author</author>
+    <guid>https://t4pusd.github.io/tags/spring-boot-reactive/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Stateless Server</title>
+    <link>https://t4pusd.github.io/tags/stateless-server/</link>
+    <pubDate>Mon, 13 Feb 2023 22:08:16 &#43;0600</pubDate>
+    <author>Author</author>
+    <guid>https://t4pusd.github.io/tags/stateless-server/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>

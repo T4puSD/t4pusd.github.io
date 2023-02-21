@@ -1,11 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title></title>
-        <link>https://t4pusd.github.io/</link>
-        <description>Personal tech blog!</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 13 Feb 2023 22:08:16 &#43;0600</lastBuildDate>
-            <atom:link href="https://t4pusd.github.io/index.xml" rel="self" type="application/rss+xml" />
-        <item>
+        <title>Spring Boot Reactive - Tag - </title>
+        <link>https://t4pusd.github.io/tags/spring-boot-reactive/</link>
+        <description>Spring Boot Reactive - Tag - </description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 13 Feb 2023 22:08:16 &#43;0600</lastBuildDate><atom:link href="https://t4pusd.github.io/tags/spring-boot-reactive/" rel="self" type="application/rss+xml" /><item>
     <title>Spring Boot Reactive JWT</title>
     <link>https://t4pusd.github.io/posts/spring_boot_reactive_jwt/</link>
     <pubDate>Mon, 13 Feb 2023 22:08:16 &#43;0600</pubDate>
@@ -16,16 +14,6 @@
             </div>🍃 Spring Boot Reactive With JWT Authetnication System Agenda In this blog post, we&rsquo;ll explore how to implement JWT authentication and authorization in a reactive way using the Spring Boot Reactive framework. 😃
 Assuming you&rsquo;re already familiar with implementing JWT authentication in a normal Spring Boot application, this blog will focus on the key differences in the implementation for a reactive application.
 Before we dive into the implementation details, let&rsquo;s quickly review what reactive programming is, what the Spring Boot Reactive framework is, and what JWT authentication is.]]></description>
-</item>
-<item>
-    <title>Caddy As File Server</title>
-    <link>https://t4pusd.github.io/posts/caddy_as_file_server/</link>
-    <pubDate>Sat, 24 Dec 2022 17:01:24 &#43;0600</pubDate>
-    <author>Author</author>
-    <guid>https://t4pusd.github.io/posts/caddy_as_file_server/</guid>
-    <description><![CDATA[Caddy Caddy is a blazing fast web server written purely in Golang. Even though it can be easily used as a http file server it is more than just that. Find out more about caddy from their offical website. https://caddyserver.com/
-How to use it as a http file server Caddy can be easily used to host a http file sharing server with the following command.
-caddy file-server --browse --debug --listen :9999 The above command will open up a http file server on port 9999]]></description>
 </item>
 </channel>
 </rss>
