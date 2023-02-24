@@ -31,7 +31,7 @@ Before we dive into the implementation details, let&rsquo;s quickly review what 
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/t4pusd.github.io\/posts\/spring_boot_reactive_jwt\/"
-        },"genre": "posts","keywords": "Spring Boot, Spring Boot Reactive, Stateless Server, JWT","wordcount":  1149 ,
+        },"genre": "posts","keywords": "Spring Boot, Spring Boot Reactive, Stateless Server, JWT","wordcount":  1144 ,
         "url": "https:\/\/t4pusd.github.io\/posts\/spring_boot_reactive_jwt\/","datePublished": "2023-02-13T22:08:16+06:00","dateModified": "2023-02-13T22:08:16+06:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -73,7 +73,7 @@ Before we dive into the implementation details, let&rsquo;s quickly review what 
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Spring Boot Reactive JWT</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>TapuSD</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-13">2023-02-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1149 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-13">2023-02-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1144 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -272,7 +272,7 @@ This is a security filter chain bean which will expose all security configuratio
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">SecurityWebFilterChain</span> <span class="nf">securityFilterChain</span><span class="o">(</span><span class="n">ServerHttpSecurity</span> <span class="n">http</span><span class="o">,</span> <span class="n">AuthService</span> <span class="n">authService</span><span class="o">)</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">http</span><span class="o">.</span><span class="na">csrf</span><span class="o">(</span><span class="n">ServerHttpSecurity</span><span class="o">.</span><span class="na">CsrfSpec</span><span class="o">::</span><span class="n">disable</span><span class="o">)</span> <span class="c1">// disabled for stateless server configuration
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">httpBasic</span><span class="o">(</span><span class="n">httpBasicSpec</span> <span class="o">-&gt;</span>
-</span></span><span class="line"><span class="cl">                        <span class="c1">// to disable http basic login popup at browser end when the jwt is expired
+</span></span><span class="line"><span class="cl">                        <span class="c1">// any kind of authentication exception will return 401 response
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="n">httpBasicSpec</span><span class="o">.</span><span class="na">authenticationEntryPoint</span><span class="o">(</span><span class="k">new</span> <span class="n">HttpStatusServerEntryPoint</span><span class="o">(</span><span class="n">HttpStatus</span><span class="o">.</span><span class="na">UNAUTHORIZED</span><span class="o">))</span>
 </span></span><span class="line"><span class="cl">                <span class="o">)</span>
 </span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">authorizeExchange</span><span class="o">(</span><span class="n">exchange</span> <span class="o">-&gt;</span> <span class="n">exchange</span><span class="o">.</span><span class="na">pathMatchers</span><span class="o">(</span><span class="s">&#34;/api/admin/**&#34;</span><span class="o">).</span><span class="na">hasRole</span><span class="o">(</span><span class="s">&#34;ADMIN&#34;</span><span class="o">)</span>
