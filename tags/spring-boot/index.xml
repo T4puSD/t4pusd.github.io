@@ -1,13 +1,14 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Spring Boot - Tag - </title>
+        <title>Spring Boot - Tag - t4pusd | Tech Blog</title>
         <link>https://t4pusd.github.io/tags/spring-boot/</link>
-        <description>Spring Boot - Tag - </description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 13 Feb 2023 22:08:16 &#43;0600</lastBuildDate><atom:link href="https://t4pusd.github.io/tags/spring-boot/" rel="self" type="application/rss+xml" /><item>
+        <description>Spring Boot - Tag - t4pusd | Tech Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sdtapusd20@gmail.com (Tapu Sutradhar)</managingEditor>
+            <webMaster>sdtapusd20@gmail.com (Tapu Sutradhar)</webMaster><lastBuildDate>Mon, 13 Feb 2023 22:08:16 &#43;0600</lastBuildDate><atom:link href="https://t4pusd.github.io/tags/spring-boot/" rel="self" type="application/rss+xml" /><item>
     <title>Spring Boot Reactive JWT</title>
     <link>https://t4pusd.github.io/posts/spring_boot_reactive_jwt/</link>
     <pubDate>Mon, 13 Feb 2023 22:08:16 &#43;0600</pubDate>
-    <author>TapuSD</author>
+    <author>Tapu Sutradhar</author>
     <guid>https://t4pusd.github.io/posts/spring_boot_reactive_jwt/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="https://cdn.pixabay.com/photo/2016/04/24/17/27/leaves-1350175_960_720.jpg" referrerpolicy="no-referrer">
