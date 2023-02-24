@@ -31,7 +31,7 @@ Before we dive into the implementation details, let&rsquo;s quickly review what 
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/t4pusd.github.io\/posts\/spring_boot_reactive_jwt\/"
-        },"genre": "posts","keywords": "Spring Boot, Spring Boot Reactive, Stateless Server, JWT","wordcount":  853 ,
+        },"genre": "posts","keywords": "Spring Boot, Spring Boot Reactive, Stateless Server, JWT","wordcount":  1149 ,
         "url": "https:\/\/t4pusd.github.io\/posts\/spring_boot_reactive_jwt\/","datePublished": "2023-02-13T22:08:16+06:00","dateModified": "2023-02-13T22:08:16+06:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -73,8 +73,8 @@ Before we dive into the implementation details, let&rsquo;s quickly review what 
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Spring Boot Reactive JWT</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>TapuSD</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-13">2023-02-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;853 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-13">2023-02-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1149 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -100,6 +100,7 @@ Before we dive into the implementation details, let&rsquo;s quickly review what 
         <li><a href="#initialize-the-project">Initialize the Project</a></li>
         <li><a href="#domains">Domains</a></li>
         <li><a href="#repository">Repository</a></li>
+        <li><a href="#authentication-filter">Authentication Filter</a></li>
         <li><a href="#security-configuration">Security Configuration</a></li>
       </ul>
     </li>
@@ -145,8 +146,16 @@ Before we dive into the implementation details, let&rsquo;s quickly review what 
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">mongodb6</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="kc">on</span>-<span class="l">failure</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">27017</span><span class="p">:</span><span class="m">27017</span><span class="w">
-</span></span></span></code></pre></div><p>This will spin up a mongodb instance inside docker container and expose port <code>27017</code> into host.</p>
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="m">37017</span><span class="p">:</span><span class="m">27017</span><span class="w">
+</span></span></span></code></pre></div><p>This will spin up a mongodb instance inside docker container and expose port <code>37017</code> into host.</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Please note that it is not necessary to spin up a mongodb instance if you already have a running mongodb instance or mongodb atlas instance. (For such case don&rsquo;t forget to put your mongodb url into project&rsquo;s <code>application.yaml</code> file)</div>
+        </div>
+    </div>
 <h3 id="initialize-the-project">Initialize the Project</h3>
 <p>Head over to <a href="https://start.spring.io/" target="_blank" rel="noopener noreffer ">Spring Initializr</a> and generate a project template with the following dependencies.</p>
 <p><img
@@ -194,13 +203,49 @@ Before we dive into the implementation details, let&rsquo;s quickly review what 
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">Mono</span><span class="o">&lt;</span><span class="n">Account</span><span class="o">&gt;</span> <span class="nf">findByEmail</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">);</span>
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h3 id="authentication-filter">Authentication Filter</h3>
+<p>Create a <code>JWTAuthenticationFilter.java</code> class file which will be used to authenticate and validate user with their JWT token and initialize security context for a request lifecycle in the server.</p>
+<p>If you don&rsquo;t know what is the role of a filter in spring lifecycle you can see them as guard of a server blocking and filter every request that are processed in the server.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JWTAuthenticationFilter</span> <span class="kd">implements</span> <span class="n">WebFilter</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">HEADER_PREFIX</span> <span class="o">=</span> <span class="s">&#34;Bearer &#34;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">AuthService</span> <span class="n">authService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="nf">JWTAuthenticationFilter</span><span class="o">(</span><span class="n">AuthService</span> <span class="n">authService</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">.</span><span class="na">authService</span> <span class="o">=</span> <span class="n">authService</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Mono</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="nf">filter</span><span class="o">(</span><span class="n">ServerWebExchange</span> <span class="n">exchange</span><span class="o">,</span> <span class="n">WebFilterChain</span> <span class="n">chain</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">token</span> <span class="o">=</span> <span class="n">resolveToken</span><span class="o">(</span><span class="n">exchange</span><span class="o">.</span><span class="na">getRequest</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">hasText</span><span class="o">(</span><span class="n">token</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">authService</span><span class="o">.</span><span class="na">verifyJWT</span><span class="o">(</span><span class="n">token</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">account</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="n">UsernamePasswordAuthenticationToken</span><span class="o">(</span><span class="n">account</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">account</span><span class="o">.</span><span class="na">getGrantedAuthorities</span><span class="o">()))</span>
+</span></span><span class="line"><span class="cl">                    <span class="o">.</span><span class="na">flatMap</span><span class="o">(</span><span class="n">authToken</span> <span class="o">-&gt;</span> <span class="n">chain</span><span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">exchange</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">                            <span class="o">.</span><span class="na">contextWrite</span><span class="o">(</span><span class="n">ReactiveSecurityContextHolder</span><span class="o">.</span><span class="na">withAuthentication</span><span class="o">(</span><span class="n">authToken</span><span class="o">)));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">chain</span><span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">exchange</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span> <span class="nf">resolveToken</span><span class="o">(</span><span class="n">ServerHttpRequest</span> <span class="n">request</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">String</span> <span class="n">bearerToken</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getHeaders</span><span class="o">().</span><span class="na">getFirst</span><span class="o">(</span><span class="n">HttpHeaders</span><span class="o">.</span><span class="na">AUTHORIZATION</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">hasText</span><span class="o">(</span><span class="n">bearerToken</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">bearerToken</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="n">HEADER_PREFIX</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">bearerToken</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">7</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><h3 id="security-configuration">Security Configuration</h3>
 <p>Create a class <code>SecurityConfig.java</code> configuration bean and declare 3 beans inside the class</p>
-<ol>
-<li>PasswordEncoder bean</li>
-<li>UserDetailsService bean</li>
-<li>SecurityWebFilterChain bean</li>
-</ol>
+<p><strong>1. PasswordEncoder Bean:</strong><br>
+The bean which will be responsible for encoding and comparing raw passwords with the encrypted password. This will ensure even if our application and database gets compromised hacker won&rsquo;t be able to see user&rsquo;s passwords.</p>
+<p><strong>2. UserDetailsService Bean:</strong><br>
+User details service bean will provide the implementation by which spring security will be able to retrive user information from database during the authentication process.</p>
+<p><strong>3. SecurityWebFilterChain Bean:</strong><br>
+This is a security filter chain bean which will expose all security configuration of the server. We can also set the authorization rules of api endpoints from here.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span>
 </span></span><span class="line"><span class="cl"><span class="nd">@EnableWebFluxSecurity</span>
 </span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SecurityConfig</span> <span class="o">{</span>
@@ -214,7 +259,7 @@ Before we dive into the implementation details, let&rsquo;s quickly review what 
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">PasswordEncoder</span> <span class="nf">passwordEncoder</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">BCryptPasswordEncoder</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">BCryptPasswordEncoder</span><span class="o">();</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
@@ -225,8 +270,8 @@ Before we dive into the implementation details, let&rsquo;s quickly review what 
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">SecurityWebFilterChain</span> <span class="nf">securityFilterChain</span><span class="o">(</span><span class="n">ServerHttpSecurity</span> <span class="n">http</span><span class="o">,</span> <span class="n">AuthService</span> <span class="n">authService</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">http</span><span class="o">.</span><span class="na">csrf</span><span class="o">(</span><span class="n">ServerHttpSecurity</span><span class="o">.</span><span class="na">CsrfSpec</span><span class="o">::</span><span class="n">disable</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">httpBasic</span><span class="o">(</span><span class="n">httpBasicSpec</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">http</span><span class="o">.</span><span class="na">csrf</span><span class="o">(</span><span class="n">ServerHttpSecurity</span><span class="o">.</span><span class="na">CsrfSpec</span><span class="o">::</span><span class="n">disable</span><span class="o">)</span> <span class="c1">// disabled for stateless server configuration
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="o">.</span><span class="na">httpBasic</span><span class="o">(</span><span class="n">httpBasicSpec</span> <span class="o">-&gt;</span>
 </span></span><span class="line"><span class="cl">                        <span class="c1">// to disable http basic login popup at browser end when the jwt is expired
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="n">httpBasicSpec</span><span class="o">.</span><span class="na">authenticationEntryPoint</span><span class="o">(</span><span class="k">new</span> <span class="n">HttpStatusServerEntryPoint</span><span class="o">(</span><span class="n">HttpStatus</span><span class="o">.</span><span class="na">UNAUTHORIZED</span><span class="o">))</span>
 </span></span><span class="line"><span class="cl">                <span class="o">)</span>
@@ -236,7 +281,15 @@ Before we dive into the implementation details, let&rsquo;s quickly review what 
 </span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">addFilterAt</span><span class="o">(</span><span class="k">new</span> <span class="n">JWTAuthenticationFilter</span><span class="o">(</span><span class="n">authService</span><span class="o">),</span> <span class="n">SecurityWebFiltersOrder</span><span class="o">.</span><span class="na">HTTP_BASIC</span><span class="o">)</span>
 </span></span><span class="line"><span class="cl">                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span></code></pre></div><p>Keep in mind that if you don&rsquo;t use this <code>@EnableWebFluxSecurity</code> annotation in the bean class your security filter won&rsquo;t take effect at all. This annotation is necessary to initialize the security filter chian for spring boot reactive.</p>
+</span></span></code></pre></div><p>Notice that we are using the <code>JWTAuthenticationFilter</code> we created earlier to replace <code>HTTP_BASIC</code> authentication filter.</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Note<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Keep in mind that if you don&rsquo;t use this <code>@EnableWebFluxSecurity</code> annotation in the bean class your security filter won&rsquo;t take effect at all. This annotation is necessary to initialize the security filter chian for spring boot reactive.</div>
+        </div>
+    </div>
 <h2 id="project-link">Project Link</h2>
 <p>You can find the full source code of the project in my github repository. Here is the link <a href="https://github.com/T4puSD/reactive-spring-rest-jwt" target="_blank" rel="noopener noreffer ">https://github.com/T4puSD/reactive-spring-rest-jwt</a></p>
 <h2 id="conclusion">Conclusion</h2>
