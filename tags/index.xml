@@ -4,7 +4,23 @@
         <link>https://t4pusd.github.io/tags/</link>
         <description>Tags - Tag - t4pusd | Tech Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sdtapusd20@gmail.com (Tapu Sutradhar)</managingEditor>
-            <webMaster>sdtapusd20@gmail.com (Tapu Sutradhar)</webMaster><lastBuildDate>Mon, 13 Feb 2023 22:08:16 &#43;0600</lastBuildDate><atom:link href="https://t4pusd.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>sdtapusd20@gmail.com (Tapu Sutradhar)</webMaster><lastBuildDate>Tue, 26 Mar 2024 17:32:06 &#43;0600</lastBuildDate><atom:link href="https://t4pusd.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Database</title>
+    <link>https://t4pusd.github.io/tags/database/</link>
+    <pubDate>Tue, 26 Mar 2024 17:32:06 &#43;0600</pubDate>
+    <author>Tapu Sutradhar</author>
+    <guid>https://t4pusd.github.io/tags/database/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Soft Delete</title>
+    <link>https://t4pusd.github.io/tags/soft-delete/</link>
+    <pubDate>Tue, 26 Mar 2024 17:32:06 &#43;0600</pubDate>
+    <author>Tapu Sutradhar</author>
+    <guid>https://t4pusd.github.io/tags/soft-delete/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>JWT</title>
     <link>https://t4pusd.github.io/tags/jwt/</link>
     <pubDate>Mon, 13 Feb 2023 22:08:16 &#43;0600</pubDate>

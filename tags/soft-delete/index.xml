@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Soft Delete - Tag - t4pusd | Tech Blog</title>
+        <link>https://t4pusd.github.io/tags/soft-delete/</link>
+        <description>Soft Delete - Tag - t4pusd | Tech Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sdtapusd20@gmail.com (Tapu Sutradhar)</managingEditor>
+            <webMaster>sdtapusd20@gmail.com (Tapu Sutradhar)</webMaster><lastBuildDate>Tue, 26 Mar 2024 17:32:06 &#43;0600</lastBuildDate><atom:link href="https://t4pusd.github.io/tags/soft-delete/" rel="self" type="application/rss+xml" /><item>
+    <title>Challenges of Implementing Soft Delete</title>
+    <link>https://t4pusd.github.io/posts/challenges-of-implementing-soft-delete/</link>
+    <pubDate>Tue, 26 Mar 2024 17:32:06 &#43;0600</pubDate>
+    <author>Tapu Sutradhar</author>
+    <guid>https://t4pusd.github.io/posts/challenges-of-implementing-soft-delete/</guid>
+    <description><![CDATA[Agenda 📋 In this blog post, we will explore the challenges of implementing the Soft Delete feature and discuss measures to mitigate those challenges.
+What is Soft Delete? 🗑️ Often in enterprise applications, we need to provide a feature for auditing and recovering accidentally deleted data. That feature is called Soft Delete.
+The definition of soft delete is pretty simple: deleting data at a logical level instead of actually deleting it in the database.]]></description>
+</item>
+</channel>
+</rss>
