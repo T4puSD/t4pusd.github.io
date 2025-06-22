@@ -1,17 +1,49 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>My New Hugo Site</title>
+        <title>t4pusd | Tech Blog</title>
         <link>https://t4pusd.github.io/</link>
-        <description>My New Hugo Site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 02 Aug 2021 13:10:51 &#43;0600</lastBuildDate>
+        <description>t4pusd&#39;s Tech Blog!</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>sdtapusd20@gmail.com (Tapu Sutradhar)</managingEditor>
+            <webMaster>sdtapusd20@gmail.com (Tapu Sutradhar)</webMaster><lastBuildDate>Tue, 26 Mar 2024 17:32:06 &#43;0600</lastBuildDate>
             <atom:link href="https://t4pusd.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>First Post</title>
-    <link>https://t4pusd.github.io/posts/first_post/</link>
-    <pubDate>Mon, 02 Aug 2021 13:10:51 &#43;0600</pubDate>
-    <author>Author</author>
-    <guid>https://t4pusd.github.io/posts/first_post/</guid>
-    <description><![CDATA[Hello! This is a demo post!
-Thank You]]></description>
-</item></channel>
+    <title>Challenges of Implementing Soft Delete</title>
+    <link>https://t4pusd.github.io/posts/challenges-of-implementing-soft-delete/</link>
+    <pubDate>Tue, 26 Mar 2024 17:32:06 &#43;0600</pubDate>
+    <author>Tapu Sutradhar</author>
+    <guid>https://t4pusd.github.io/posts/challenges-of-implementing-soft-delete/</guid>
+    <description><![CDATA[<h2 id="agenda-">Agenda 📋</h2>
+<p>In this blog post, we will explore the challenges of implementing the Soft Delete feature and discuss measures to mitigate those challenges.</p>
+<h2 id="what-is-soft-delete-">What is Soft Delete? 🗑️</h2>
+<p>Often in enterprise applications, we need to provide a feature for auditing and recovering accidentally deleted data. That feature is called <strong>Soft Delete</strong>.</p>
+<p>The definition of soft delete is pretty simple: deleting data at a logical level instead of actually deleting it in the database. Implementation-wise, it&rsquo;s straightforward as well: marking data as deleted in the database layer and ignoring that data in the application layer.</p>]]></description>
+</item>
+<item>
+    <title>Spring Boot Reactive JWT</title>
+    <link>https://t4pusd.github.io/posts/spring_boot_reactive_jwt/</link>
+    <pubDate>Mon, 13 Feb 2023 22:08:16 &#43;0600</pubDate>
+    <author>Tapu Sutradhar</author>
+    <guid>https://t4pusd.github.io/posts/spring_boot_reactive_jwt/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="https://cdn.pixabay.com/photo/2016/04/24/17/27/leaves-1350175_960_720.jpg" referrerpolicy="no-referrer">
+            </div><h1 id="-spring-boot-reactive-with-jwt-authetnication-system">🍃 Spring Boot Reactive With JWT Authetnication System</h1>
+<h2 id="agenda">Agenda</h2>
+<p>In this blog post, we&rsquo;ll explore how to implement JWT authentication and authorization in a reactive way using the Spring Boot Reactive framework. 😃</p>
+<p>Assuming you&rsquo;re already familiar with implementing JWT authentication in a normal Spring Boot application, this blog will focus on the key differences in the implementation for a reactive application.</p>
+<p>Before we dive into the implementation details, let&rsquo;s quickly review what reactive programming is, what the Spring Boot Reactive framework is, and what JWT authentication is.</p>]]></description>
+</item>
+<item>
+    <title>Caddy As File Server</title>
+    <link>https://t4pusd.github.io/posts/caddy_as_file_server/</link>
+    <pubDate>Sat, 24 Dec 2022 17:01:24 &#43;0600</pubDate>
+    <author>Tapu Sutradhar</author>
+    <guid>https://t4pusd.github.io/posts/caddy_as_file_server/</guid>
+    <description><![CDATA[<h1 id="caddy">Caddy</h1>
+<p>Caddy is a blazing fast web server written purely in <code>Golang</code>. Even though it can be easily used as a http file server it is more than just that. Find out more about caddy from their offical website. <code>https://caddyserver.com/</code></p>
+<h1 id="how-to-use-it-as-a-http-file-server">How to use it as a http file server</h1>
+<p>Caddy can be easily used to host a http file sharing server with the following command.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">caddy file-server --browse --debug --listen :9999
+</span></span></code></pre></div><p>The above command will open up a http file server on port <code>9999</code></p>]]></description>
+</item>
+</channel>
 </rss>

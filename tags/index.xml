@@ -1,7 +1,54 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Tags - Tag - My New Hugo Site</title>
-        <link>https://t4pusd.github.io/tags/</link>
-        <description>Tags - Tag - My New Hugo Site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://t4pusd.github.io/tags/" rel="self" type="application/rss+xml" /></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on t4pusd | Tech Blog</title>
+    <link>https://t4pusd.github.io/tags/</link>
+    <description>Recent content in Tags on t4pusd | Tech Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 26 Mar 2024 17:32:06 +0600</lastBuildDate>
+    <atom:link href="https://t4pusd.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Database</title>
+      <link>https://t4pusd.github.io/tags/database/</link>
+      <pubDate>Tue, 26 Mar 2024 17:32:06 +0600</pubDate>
+      <guid>https://t4pusd.github.io/tags/database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Soft Delete</title>
+      <link>https://t4pusd.github.io/tags/soft-delete/</link>
+      <pubDate>Tue, 26 Mar 2024 17:32:06 +0600</pubDate>
+      <guid>https://t4pusd.github.io/tags/soft-delete/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>JWT</title>
+      <link>https://t4pusd.github.io/tags/jwt/</link>
+      <pubDate>Mon, 13 Feb 2023 22:08:16 +0600</pubDate>
+      <guid>https://t4pusd.github.io/tags/jwt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spring Boot</title>
+      <link>https://t4pusd.github.io/tags/spring-boot/</link>
+      <pubDate>Mon, 13 Feb 2023 22:08:16 +0600</pubDate>
+      <guid>https://t4pusd.github.io/tags/spring-boot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spring Boot Reactive</title>
+      <link>https://t4pusd.github.io/tags/spring-boot-reactive/</link>
+      <pubDate>Mon, 13 Feb 2023 22:08:16 +0600</pubDate>
+      <guid>https://t4pusd.github.io/tags/spring-boot-reactive/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Stateless Server</title>
+      <link>https://t4pusd.github.io/tags/stateless-server/</link>
+      <pubDate>Mon, 13 Feb 2023 22:08:16 +0600</pubDate>
+      <guid>https://t4pusd.github.io/tags/stateless-server/</guid>
+      <description></description>
+    </item>
+  </channel>
 </rss>

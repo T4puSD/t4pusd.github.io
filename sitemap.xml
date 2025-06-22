@@ -2,8 +2,17 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://t4pusd.github.io/posts/first_post/</loc><lastmod>2021-08-02T13:10:51&#43;06:00</lastmod></url><url>
-            <loc>https://t4pusd.github.io/</loc><lastmod>2021-08-02T13:10:51&#43;06:00</lastmod></url><url>
-            <loc>https://t4pusd.github.io/posts/</loc><lastmod>2021-08-02T13:10:51&#43;06:00</lastmod></url><url>
-            <loc>https://t4pusd.github.io/categories/</loc></url><url>
-            <loc>https://t4pusd.github.io/tags/</loc></url></urlset>
+            <loc>https://t4pusd.github.io/posts/challenges-of-implementing-soft-delete/</loc><lastmod>2024-03-26T17:32:06&#43;06:00</lastmod></url><url>
+            <loc>https://t4pusd.github.io/tags/database/</loc><lastmod>2024-03-26T17:32:06&#43;06:00</lastmod></url><url>
+            <loc>https://t4pusd.github.io/posts/</loc><lastmod>2024-03-26T17:32:06&#43;06:00</lastmod></url><url>
+            <loc>https://t4pusd.github.io/tags/soft-delete/</loc><lastmod>2024-03-26T17:32:06&#43;06:00</lastmod></url><url>
+            <loc>https://t4pusd.github.io/</loc><lastmod>2024-03-26T17:32:06&#43;06:00</lastmod></url><url>
+            <loc>https://t4pusd.github.io/tags/</loc><lastmod>2024-03-26T17:32:06&#43;06:00</lastmod></url><url>
+            <loc>https://t4pusd.github.io/tags/jwt/</loc><lastmod>2023-02-13T22:08:16&#43;06:00</lastmod></url><url>
+            <loc>https://t4pusd.github.io/tags/spring-boot/</loc><lastmod>2023-02-13T22:08:16&#43;06:00</lastmod></url><url>
+            <loc>https://t4pusd.github.io/tags/spring-boot-reactive/</loc><lastmod>2023-02-13T22:08:16&#43;06:00</lastmod></url><url>
+            <loc>https://t4pusd.github.io/posts/spring_boot_reactive_jwt/</loc><lastmod>2023-02-13T22:08:16&#43;06:00</lastmod></url><url>
+            <loc>https://t4pusd.github.io/tags/stateless-server/</loc><lastmod>2023-02-13T22:08:16&#43;06:00</lastmod></url><url>
+            <loc>https://t4pusd.github.io/posts/caddy_as_file_server/</loc><lastmod>2022-12-24T17:01:24&#43;06:00</lastmod></url><url>
+            <loc>https://t4pusd.github.io/aboutme/</loc><lastmod>2022-12-09T14:51:11&#43;06:00</lastmod></url><url>
+            <loc>https://t4pusd.github.io/categories/</loc></url></urlset>
